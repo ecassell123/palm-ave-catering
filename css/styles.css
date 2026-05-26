@@ -1,0 +1,1334 @@
+/* =============================================================
+   PALM AVE CATERING — Custom Stylesheet
+   Brand Colors:
+     Dark Brown  : #3a2222
+     Warm Cream  : #fff9f0
+     Sage Green  : #99b744
+   Brand Fonts:
+     Display     : Nunito (closest Google Fonts match to Comica)
+     Body        : Montserrat
+   ============================================================= */
+
+
+/* =============================================
+   1. ROOT VARIABLES
+   ============================================= */
+:root {
+  --color-dark:        #3a2222;
+  --color-dark-80:     rgba(58, 34, 34, 0.8);
+  --color-cream:       #fff9f0;
+  --color-cream-mid:   #f2ebe0;
+  --color-green:       #99b744;
+  --color-green-dark:  #7a9436;
+  --color-green-light: rgba(153, 183, 68, 0.12);
+  --color-white:       #ffffff;
+  --color-text-body:   #4a3535;
+  --color-text-muted:  #7a6060;
+
+  --font-display: 'Nunito', sans-serif;
+  --font-body:    'Montserrat', sans-serif;
+
+  --radius:    12px;
+  --radius-sm:  8px;
+  --radius-pill: 50px;
+
+  --shadow-sm:  0 4px 20px rgba(58, 34, 34, 0.07);
+  --shadow-md:  0 10px 40px rgba(58, 34, 34, 0.11);
+  --shadow-lg:  0 20px 60px rgba(58, 34, 34, 0.15);
+
+  --transition: all 0.28s ease;
+
+  --nav-height: 90px;
+}
+
+
+/* =============================================
+   2. BASE RESET & BODY
+   ============================================= */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--color-cream);
+  color: var(--color-text-body);
+  font-size: 1rem;
+  line-height: 1.7;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  transition: var(--transition);
+}
+
+/* Offset anchor scroll for fixed navbar */
+section[id] {
+  scroll-margin-top: var(--nav-height);
+}
+
+
+/* =============================================
+   3. TYPOGRAPHY
+   ============================================= */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  color: var(--color-dark);
+  line-height: 1.2;
+  font-weight: 800;
+}
+
+.section-label {
+  display: block;
+  text-transform: uppercase;
+  letter-spacing: 3.5px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--color-green);
+  font-family: var(--font-body);
+  margin-bottom: 0.6rem;
+}
+
+.section-title {
+  font-size: clamp(1.9rem, 3vw, 2.6rem);
+  font-weight: 900;
+  color: var(--color-dark);
+  margin-bottom: 1rem;
+  line-height: 1.18;
+}
+
+.section-sub {
+  font-size: 1rem;
+  color: var(--color-text-muted);
+  line-height: 1.75;
+  margin-bottom: 0;
+  max-width: 580px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.about-divider {
+  width: 56px;
+  height: 3px;
+  background-color: var(--color-green);
+  border-radius: 2px;
+  margin: 1.4rem 0;
+}
+
+
+/* =============================================
+   4. SHARED SECTION PADDING
+   ============================================= */
+.section-pad {
+  padding: 100px 0;
+}
+
+.section-pad-sm {
+  padding: 70px 0;
+}
+
+
+/* =============================================
+   5. BUTTONS
+   ============================================= */
+
+/* Primary green button */
+.btn-primary-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background-color: var(--color-green);
+  color: var(--color-white) !important;
+  border: 2px solid var(--color-green);
+  border-radius: var(--radius-pill);
+  padding: 0.8rem 2.1rem;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.9rem;
+  letter-spacing: 0.4px;
+  text-decoration: none;
+  transition: var(--transition);
+}
+.btn-primary-brand:hover,
+.btn-primary-brand:focus-visible {
+  background-color: var(--color-green-dark);
+  border-color: var(--color-green-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(153, 183, 68, 0.35);
+}
+
+/* Outline cream button (for hero on dark bg) */
+.btn-outline-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background-color: transparent;
+  color: var(--color-cream) !important;
+  border: 2px solid rgba(255, 249, 240, 0.65);
+  border-radius: var(--radius-pill);
+  padding: 0.8rem 2.1rem;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.9rem;
+  letter-spacing: 0.4px;
+  text-decoration: none;
+  transition: var(--transition);
+}
+.btn-outline-brand:hover,
+.btn-outline-brand:focus-visible {
+  background-color: rgba(255, 249, 240, 0.12);
+  border-color: var(--color-cream);
+  transform: translateY(-2px);
+}
+
+/* Dark filled button (used in sections on light bg) */
+.btn-dark-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background-color: var(--color-dark);
+  color: var(--color-cream) !important;
+  border: 2px solid var(--color-dark);
+  border-radius: var(--radius-pill);
+  padding: 0.8rem 2.1rem;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.9rem;
+  letter-spacing: 0.4px;
+  text-decoration: none;
+  transition: var(--transition);
+}
+.btn-dark-brand:hover,
+.btn-dark-brand:focus-visible {
+  background-color: var(--color-green);
+  border-color: var(--color-green);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(153, 183, 68, 0.3);
+}
+
+/* Navbar Inquire Now pill */
+.btn-inquire {
+  display: inline-flex;
+  align-items: center;
+  background-color: var(--color-dark);
+  color: var(--color-cream) !important;
+  border: none;
+  border-radius: var(--radius-pill);
+  padding: 0.55rem 1.6rem;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.85rem;
+  letter-spacing: 0.4px;
+  text-decoration: none;
+  transition: var(--transition);
+}
+.btn-inquire:hover,
+.btn-inquire:focus-visible {
+  background-color: var(--color-green);
+  transform: translateY(-1px);
+}
+
+/* Footer CTA button */
+.btn-inquire-footer {
+  display: inline-block;
+  background-color: transparent;
+  color: var(--color-cream) !important;
+  border: 1.5px solid rgba(255, 249, 240, 0.4);
+  border-radius: var(--radius-pill);
+  padding: 0.55rem 1.4rem;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.82rem;
+  letter-spacing: 0.4px;
+  text-decoration: none;
+  transition: var(--transition);
+}
+.btn-inquire-footer:hover {
+  border-color: var(--color-green);
+  color: var(--color-green) !important;
+}
+
+/* Menu PDF section buttons */
+.btn-menu-view {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background-color: var(--color-green);
+  color: var(--color-white) !important;
+  border: 2px solid var(--color-green);
+  border-radius: var(--radius-pill);
+  padding: 0.85rem 2.4rem;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-decoration: none;
+  transition: var(--transition);
+  margin: 0.35rem;
+}
+.btn-menu-view:hover,
+.btn-menu-view:focus-visible {
+  background-color: var(--color-green-dark);
+  border-color: var(--color-green-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(153, 183, 68, 0.35);
+}
+
+.btn-menu-download {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background-color: transparent;
+  color: var(--color-cream) !important;
+  border: 2px solid rgba(255, 249, 240, 0.45);
+  border-radius: var(--radius-pill);
+  padding: 0.85rem 2.4rem;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-decoration: none;
+  transition: var(--transition);
+  margin: 0.35rem;
+}
+.btn-menu-download:hover,
+.btn-menu-download:focus-visible {
+  border-color: var(--color-cream);
+  background-color: rgba(255, 249, 240, 0.08);
+  transform: translateY(-2px);
+}
+
+/* Form submit button */
+.btn-submit {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  width: 100%;
+  background-color: var(--color-dark);
+  color: var(--color-cream) !important;
+  border: none;
+  border-radius: var(--radius-pill);
+  padding: 0.95rem 2rem;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.95rem;
+  letter-spacing: 0.4px;
+  cursor: pointer;
+  transition: var(--transition);
+}
+.btn-submit:hover,
+.btn-submit:focus-visible {
+  background-color: var(--color-green);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(153, 183, 68, 0.3);
+}
+
+
+/* =============================================
+   6. NAVIGATION
+   ============================================= */
+.navbar {
+  background-color: var(--color-cream);
+  border-bottom: 1px solid rgba(58, 34, 34, 0.07);
+  padding: 0.75rem 0;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  z-index: 1030;
+}
+
+/* Scrolled state — added via JS */
+.navbar.scrolled {
+  box-shadow: 0 4px 20px rgba(58, 34, 34, 0.1);
+}
+
+.nav-logo {
+  height: 62px;
+  width: auto;
+}
+
+.navbar-brand {
+  padding: 0;
+  margin-right: 2rem;
+}
+
+.navbar-toggler {
+  border: 1.5px solid rgba(58, 34, 34, 0.25);
+  border-radius: var(--radius-sm);
+  padding: 0.4rem 0.65rem;
+}
+.navbar-toggler:focus {
+  box-shadow: 0 0 0 3px rgba(153, 183, 68, 0.2);
+}
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(58,34,34,0.85)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+.navbar-nav .nav-link {
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 0.88rem;
+  letter-spacing: 0.3px;
+  color: var(--color-dark) !important;
+  padding: 0.5rem 0.85rem !important;
+  transition: var(--transition);
+  position: relative;
+}
+.navbar-nav .nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 4px;
+  left: 0.85rem;
+  right: 0.85rem;
+  height: 2px;
+  background-color: var(--color-green);
+  border-radius: 1px;
+  transform: scaleX(0);
+  transition: transform 0.25s ease;
+}
+.navbar-nav .nav-link:hover::after,
+.navbar-nav .nav-link.active::after {
+  transform: scaleX(1);
+}
+.navbar-nav .nav-link:hover {
+  color: var(--color-green) !important;
+}
+
+
+/* =============================================
+   7. HERO SECTION
+   ============================================= */
+.hero-section {
+  min-height: 100vh;
+  background-image: url('../assets/images/grazing-table-full.jpg');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding-top: var(--nav-height);
+}
+
+/* Warm dark overlay for text legibility */
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(58, 34, 34, 0.80) 0%,
+    rgba(58, 34, 34, 0.60) 55%,
+    rgba(58, 34, 34, 0.35) 100%
+  );
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  color: var(--color-cream);
+  max-width: 680px;
+  padding: 60px 0;
+}
+
+.hero-logo-badge {
+  display: inline-block;
+  background: rgba(255, 249, 240, 0.92);
+  border-radius: 50px;
+  padding: 10px 22px;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+.hero-logo {
+  height: 42px;
+  width: auto;
+  display: block;
+}
+
+.hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.2rem, 5vw, 3.8rem);
+  font-weight: 900;
+  color: var(--color-cream);
+  line-height: 1.14;
+  margin-bottom: 1.4rem;
+}
+
+.hero-subtitle {
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  font-weight: 300;
+  color: rgba(255, 249, 240, 0.9);
+  line-height: 1.75;
+  margin-bottom: 2.4rem;
+  max-width: 520px;
+}
+
+.hero-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+
+/* =============================================
+   8. ABOUT SECTION
+   ============================================= */
+.about-section {
+  background-color: var(--color-white);
+}
+
+.about-image-wrap {
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  position: relative;
+}
+
+.about-img {
+  width: 100%;
+  height: 520px;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+/* Decorative accent on image corner */
+.about-image-wrap::before {
+  content: '';
+  position: absolute;
+  top: -14px;
+  right: -14px;
+  width: 80px;
+  height: 80px;
+  border-top: 3px solid var(--color-green);
+  border-right: 3px solid var(--color-green);
+  border-radius: 0 var(--radius) 0 0;
+  z-index: 1;
+}
+
+.about-body-text {
+  font-size: 0.97rem;
+  line-height: 1.85;
+  color: var(--color-text-body);
+  margin-bottom: 1rem;
+}
+
+.about-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.about-tag {
+  display: inline-block;
+  background-color: var(--color-green-light);
+  color: var(--color-dark);
+  border: 1px solid rgba(153, 183, 68, 0.25);
+  border-radius: var(--radius-pill);
+  padding: 0.35rem 1rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+}
+
+
+/* =============================================
+   9. SERVICES SECTION
+   ============================================= */
+.services-section {
+  background-color: var(--color-cream);
+}
+
+.service-card {
+  background-color: var(--color-white);
+  border-radius: var(--radius);
+  padding: 2rem 1.75rem;
+  height: 100%;
+  transition: var(--transition);
+  border: 1px solid rgba(58, 34, 34, 0.06);
+  box-shadow: var(--shadow-sm);
+}
+.service-card:hover {
+  transform: translateY(-7px);
+  box-shadow: var(--shadow-md);
+  border-color: rgba(153, 183, 68, 0.3);
+}
+
+.service-icon {
+  width: 52px;
+  height: 52px;
+  background-color: var(--color-green-light);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.45rem;
+  margin-bottom: 1.2rem;
+  border: 1px solid rgba(153, 183, 68, 0.2);
+}
+
+.service-card h4 {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: var(--color-dark);
+  margin-bottom: 0.65rem;
+}
+
+.service-card p {
+  font-size: 0.88rem;
+  line-height: 1.65;
+  color: var(--color-text-muted);
+  margin-bottom: 0;
+}
+
+
+/* =============================================
+   10. MENU HIGHLIGHTS SECTION
+   ============================================= */
+.menu-highlights-section {
+  background-color: var(--color-white);
+}
+
+.menu-item-card {
+  border-radius: var(--radius);
+  overflow: hidden;
+  height: 100%;
+  transition: var(--transition);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid rgba(58, 34, 34, 0.06);
+}
+.menu-item-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-md);
+}
+
+.menu-item-image {
+  height: 210px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+}
+
+/* Placeholder for cards without a specific photo */
+.menu-item-image--placeholder {
+  background-color: var(--color-cream-mid);
+  background-image:
+    linear-gradient(135deg, rgba(153,183,68,0.15) 0%, rgba(58,34,34,0.08) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.menu-item-image--placeholder::after {
+  content: '🌿';
+  font-size: 3rem;
+  opacity: 0.5;
+}
+
+.menu-item-badge {
+  position: absolute;
+  top: 0.9rem;
+  left: 0.9rem;
+  background-color: var(--color-green);
+  color: var(--color-white);
+  font-family: var(--font-body);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 0.28rem 0.8rem;
+  border-radius: var(--radius-pill);
+}
+
+.menu-item-body {
+  background-color: var(--color-white);
+  padding: 1.2rem 1.3rem;
+}
+
+.menu-item-body h5 {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 800;
+  color: var(--color-dark);
+  margin-bottom: 0.4rem;
+}
+
+.menu-item-body p {
+  font-size: 0.84rem;
+  color: var(--color-text-muted);
+  line-height: 1.55;
+  margin-bottom: 0;
+}
+
+/* Menu item pill tags */
+.menu-item-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 1.5rem 2rem;
+  background-color: var(--color-cream);
+  border-radius: var(--radius);
+  border: 1px solid rgba(58, 34, 34, 0.06);
+}
+
+.menu-pill {
+  display: inline-block;
+  background-color: var(--color-white);
+  color: var(--color-dark);
+  border: 1px solid rgba(58, 34, 34, 0.1);
+  border-radius: var(--radius-pill);
+  padding: 0.4rem 1.1rem;
+  font-size: 0.82rem;
+  font-weight: 500;
+  transition: var(--transition);
+}
+.menu-pill:hover {
+  border-color: var(--color-green);
+  color: var(--color-green-dark);
+  background-color: var(--color-green-light);
+}
+
+
+/* =============================================
+   11. MENU PDF SECTION
+   ============================================= */
+.menu-pdf-section {
+  background-color: var(--color-dark);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Subtle background texture via radial gradient */
+.menu-pdf-section::before {
+  content: '';
+  position: absolute;
+  top: -80px;
+  right: -80px;
+  width: 380px;
+  height: 380px;
+  background: radial-gradient(circle, rgba(153,183,68,0.12) 0%, transparent 70%);
+  pointer-events: none;
+}
+.menu-pdf-section::after {
+  content: '';
+  position: absolute;
+  bottom: -60px;
+  left: -60px;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(153,183,68,0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.menu-pdf-section > .container {
+  position: relative;
+  z-index: 1;
+}
+
+.menu-pdf-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.9rem, 3.5vw, 2.7rem);
+  font-weight: 900;
+  color: var(--color-cream);
+  margin-bottom: 1rem;
+}
+
+.menu-pdf-body {
+  color: rgba(255, 249, 240, 0.72);
+  font-size: 1rem;
+  line-height: 1.75;
+  max-width: 520px;
+  margin: 0 auto 0.5rem;
+}
+
+.menu-pdf-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.4rem;
+}
+
+.menu-pdf-note {
+  color: rgba(255, 249, 240, 0.5);
+  font-size: 0.88rem;
+  margin-top: 1.5rem;
+}
+
+.menu-pdf-link {
+  color: var(--color-green);
+  text-decoration: none;
+  font-weight: 600;
+}
+.menu-pdf-link:hover {
+  color: #b8d456;
+  text-decoration: underline;
+}
+
+
+/* =============================================
+   12. EVENTS SECTION
+   ============================================= */
+.events-section {
+  background-color: var(--color-cream);
+}
+
+.events-body-text {
+  font-size: 0.97rem;
+  line-height: 1.85;
+  color: var(--color-text-body);
+  margin-bottom: 1rem;
+}
+
+.event-pills-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+}
+
+.event-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  background-color: var(--color-white);
+  border: 1.5px solid rgba(58, 34, 34, 0.08);
+  border-radius: var(--radius-pill);
+  padding: 0.65rem 1.3rem;
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--color-dark);
+  transition: var(--transition);
+  box-shadow: 0 2px 10px rgba(58, 34, 34, 0.04);
+  cursor: default;
+}
+.event-pill:hover {
+  border-color: rgba(153, 183, 68, 0.5);
+  background-color: var(--color-green-light);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(153, 183, 68, 0.15);
+}
+
+.event-pill-dot {
+  width: 7px;
+  height: 7px;
+  background-color: var(--color-green);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+
+/* =============================================
+   13. CUSTOM CATERING SECTION
+   ============================================= */
+.custom-section {
+  background-color: var(--color-white);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Subtle warm tint in the background right column */
+.custom-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 38%;
+  height: 100%;
+  background-color: rgba(153, 183, 68, 0.04);
+  clip-path: polygon(18% 0%, 100% 0%, 100% 100%, 0% 100%);
+  pointer-events: none;
+}
+
+.custom-image-wrap {
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  position: relative;
+}
+
+/* Decorative accent opposite corner from about section */
+.custom-image-wrap::before {
+  content: '';
+  position: absolute;
+  bottom: -14px;
+  left: -14px;
+  width: 80px;
+  height: 80px;
+  border-bottom: 3px solid var(--color-green);
+  border-left: 3px solid var(--color-green);
+  border-radius: 0 0 0 var(--radius);
+  z-index: 1;
+}
+
+.custom-img {
+  width: 100%;
+  height: 480px;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+.custom-body-text {
+  font-size: 0.97rem;
+  line-height: 1.85;
+  color: var(--color-text-body);
+  margin-bottom: 1rem;
+}
+
+.custom-features {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.custom-feature-item {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--color-text-body);
+}
+
+.custom-feature-item .bi-check-circle-fill {
+  color: var(--color-green);
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+
+/* =============================================
+   14. CONTACT / INQUIRY FORM SECTION
+   ============================================= */
+.contact-section {
+  background-color: var(--color-cream);
+}
+
+.contact-info-block {
+  background-color: var(--color-dark);
+  border-radius: var(--radius);
+  padding: 2.5rem;
+  height: 100%;
+  color: var(--color-cream);
+}
+
+.contact-info-block h3 {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: var(--color-cream);
+  margin-bottom: 0.75rem;
+}
+
+.contact-info-block > p {
+  color: rgba(255, 249, 240, 0.7);
+  font-size: 0.92rem;
+  line-height: 1.7;
+  margin-bottom: 1.75rem;
+}
+
+.contact-detail {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.85rem;
+  margin-bottom: 1.25rem;
+}
+
+.contact-detail-icon {
+  width: 38px;
+  height: 38px;
+  background-color: rgba(153, 183, 68, 0.18);
+  border-radius: 9px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.95rem;
+  color: var(--color-green);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.contact-detail-label {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  font-weight: 700;
+  color: rgba(255, 249, 240, 0.45);
+  margin-bottom: 0.15rem;
+  font-family: var(--font-body);
+}
+
+.contact-detail-value {
+  font-size: 0.88rem;
+  color: rgba(255, 249, 240, 0.85);
+  text-decoration: none;
+  line-height: 1.4;
+  display: block;
+}
+a.contact-detail-value:hover {
+  color: var(--color-green);
+}
+
+/* Form wrapper */
+.form-wrap {
+  background-color: var(--color-white);
+  border-radius: var(--radius);
+  padding: 2.5rem;
+  box-shadow: var(--shadow-md);
+}
+
+.form-wrap .form-label {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  color: var(--color-dark);
+  margin-bottom: 0.4rem;
+}
+
+.required-star {
+  color: var(--color-green);
+  margin-left: 2px;
+}
+
+.form-wrap .form-control,
+.form-wrap .form-select {
+  border: 1.5px solid rgba(58, 34, 34, 0.12);
+  border-radius: var(--radius-sm);
+  padding: 0.72rem 1rem;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  color: var(--color-dark);
+  background-color: var(--color-cream);
+  transition: var(--transition);
+  box-shadow: none;
+}
+.form-wrap .form-control::placeholder {
+  color: rgba(58, 34, 34, 0.35);
+  font-size: 0.88rem;
+}
+.form-wrap .form-control:focus,
+.form-wrap .form-select:focus {
+  border-color: var(--color-green);
+  box-shadow: 0 0 0 3px rgba(153, 183, 68, 0.16);
+  background-color: var(--color-white);
+  outline: none;
+}
+
+.form-wrap textarea.form-control {
+  min-height: 120px;
+  resize: vertical;
+}
+
+
+/* =============================================
+   15. FOOTER
+   ============================================= */
+.footer {
+  background-color: var(--color-dark);
+  color: rgba(255, 249, 240, 0.65);
+  padding: 70px 0 0;
+}
+
+.footer-logo {
+  height: 100px;
+  width: 100px;
+  object-fit: contain;
+  border-radius: 12px;
+  margin-bottom: 1.25rem;
+}
+
+.footer-tagline {
+  font-size: 0.88rem;
+  color: rgba(255, 249, 240, 0.55);
+  line-height: 1.65;
+  margin-bottom: 0.25rem;
+}
+
+.footer-email {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: rgba(255, 249, 240, 0.65) !important;
+  text-decoration: none;
+  font-size: 0.86rem;
+  transition: var(--transition);
+}
+.footer-email:hover {
+  color: var(--color-green) !important;
+}
+
+.footer-links h6,
+.footer-contact h6 {
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+  font-weight: 700;
+  color: var(--color-cream);
+  margin-bottom: 1.1rem;
+}
+
+.footer-links ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-links ul li {
+  margin-bottom: 0.5rem;
+}
+
+.footer-links ul li a {
+  color: rgba(255, 249, 240, 0.58);
+  text-decoration: none;
+  font-size: 0.88rem;
+  transition: var(--transition);
+}
+.footer-links ul li a:hover {
+  color: var(--color-green);
+  padding-left: 4px;
+}
+
+.footer-contact p {
+  color: rgba(255, 249, 240, 0.58);
+  font-size: 0.88rem;
+  line-height: 1.65;
+}
+
+.footer-contact a {
+  color: rgba(255, 249, 240, 0.58);
+  font-size: 0.88rem;
+  text-decoration: none;
+  display: block;
+  margin-bottom: 0.3rem;
+  transition: var(--transition);
+}
+.footer-contact a:not(.btn-inquire-footer):hover {
+  color: var(--color-green);
+}
+
+.footer-bottom {
+  border-top: 1px solid rgba(255, 249, 240, 0.08);
+  margin-top: 50px;
+  padding: 22px 0;
+  font-size: 0.78rem;
+  color: rgba(255, 249, 240, 0.35);
+  text-align: center;
+}
+
+.footer-bottom a {
+  color: rgba(255, 249, 240, 0.4);
+  text-decoration: none;
+  transition: var(--transition);
+}
+.footer-bottom a:hover {
+  color: var(--color-green);
+}
+
+
+/* =============================================
+   16. FORM SUCCESS STATE
+   ============================================= */
+.form-success-message {
+  display: none;
+  background-color: var(--color-green-light);
+  border: 1.5px solid rgba(153, 183, 68, 0.35);
+  border-radius: var(--radius-sm);
+  padding: 1.2rem 1.5rem;
+  color: var(--color-dark);
+  font-size: 0.92rem;
+  margin-top: 1rem;
+  text-align: center;
+}
+
+.form-success-message.visible {
+  display: block;
+}
+
+
+/* =============================================
+   17. UTILITY CLASSES
+   ============================================= */
+.text-green {
+  color: var(--color-green) !important;
+}
+
+.bg-cream {
+  background-color: var(--color-cream) !important;
+}
+
+/* Thin green divider bar (reused across sections) */
+.green-bar {
+  display: block;
+  width: 50px;
+  height: 3px;
+  background-color: var(--color-green);
+  border-radius: 2px;
+  margin-bottom: 1.5rem;
+}
+
+
+/* =============================================
+   18. RESPONSIVE — TABLET (≤ 991px)
+   ============================================= */
+@media (max-width: 991px) {
+
+  .navbar-collapse {
+    background-color: var(--color-cream);
+    border-radius: var(--radius-sm);
+    padding: 1rem 1.25rem;
+    margin-top: 0.6rem;
+    box-shadow: 0 10px 30px rgba(58, 34, 34, 0.12);
+    border: 1px solid rgba(58, 34, 34, 0.07);
+  }
+
+  .navbar-nav .nav-link::after {
+    display: none;
+  }
+
+  .btn-inquire {
+    display: block;
+    text-align: center;
+    margin-top: 0.75rem;
+    width: 100%;
+  }
+
+  .about-image-wrap::before,
+  .custom-image-wrap::before {
+    display: none;
+  }
+
+  .custom-section::before {
+    display: none;
+  }
+
+  .hero-content {
+    max-width: 100%;
+  }
+
+}
+
+
+/* =============================================
+   19. RESPONSIVE — MOBILE (≤ 767px)
+   ============================================= */
+@media (max-width: 767px) {
+
+  .section-pad {
+    padding: 72px 0;
+  }
+
+  .hero-section {
+    background-attachment: scroll; /* Fix parallax on mobile Safari */
+    min-height: 100svh;
+  }
+
+  .hero-logo {
+    height: 48px;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .hero-buttons .btn-primary-brand,
+  .hero-buttons .btn-outline-brand {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .about-img {
+    height: 280px;
+  }
+
+  .custom-img {
+    height: 280px;
+  }
+
+  .menu-pdf-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .btn-menu-view,
+  .btn-menu-download {
+    width: 100%;
+    max-width: 320px;
+    justify-content: center;
+  }
+
+  .form-wrap {
+    padding: 1.75rem 1.25rem;
+  }
+
+  .contact-info-block {
+    padding: 1.75rem 1.25rem;
+    height: auto;
+  }
+
+  .footer {
+    padding-top: 50px;
+  }
+
+  .event-pills-wrap {
+    gap: 0.5rem;
+  }
+
+}
+
+
+/* =============================================
+   20. RESPONSIVE — SMALL MOBILE (≤ 480px)
+   ============================================= */
+@media (max-width: 480px) {
+
+  .nav-logo {
+    height: 34px;
+  }
+
+  .menu-item-list {
+    padding: 1.25rem 1rem;
+  }
+
+  .footer-bottom {
+    font-size: 0.72rem;
+  }
+
+}
+
+
+/* =============================================
+   21. PRINT STYLES
+   ============================================= */
+@media print {
+  .navbar,
+  .hero-overlay,
+  .btn,
+  .footer {
+    display: none !important;
+  }
+
+  .hero-section {
+    min-height: auto;
+    padding: 2rem 0;
+  }
+}
