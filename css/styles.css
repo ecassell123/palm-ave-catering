@@ -1144,22 +1144,32 @@ a.contact-detail-value:hover {
 
 
 /* =============================================
-   16. FORM SUCCESS STATE
+   16. FORM STATUS MESSAGES (success / error)
    ============================================= */
-.form-success-message {
-  display: none;
-  background-color: var(--color-green-light);
-  border: 1.5px solid rgba(153, 183, 68, 0.35);
+.form-status-message {
   border-radius: var(--radius-sm);
   padding: 1.2rem 1.5rem;
-  color: var(--color-dark);
   font-size: 0.92rem;
   margin-top: 1rem;
   text-align: center;
+  line-height: 1.6;
 }
 
-.form-success-message.visible {
-  display: block;
+.form-status-success {
+  background-color: var(--color-green-light);
+  border: 1.5px solid rgba(153, 183, 68, 0.35);
+  color: var(--color-dark);
+}
+
+.form-status-error {
+  background-color: rgba(180, 60, 60, 0.08);
+  border: 1.5px solid rgba(180, 60, 60, 0.25);
+  color: #7a2020;
+}
+
+.form-status-error a {
+  color: #7a2020;
+  font-weight: 600;
 }
 
 
@@ -1317,7 +1327,208 @@ a.contact-detail-value:hover {
 
 
 /* =============================================
-   21. PRINT STYLES
+   21. OASIS OUTDOORS EVENT SPACE SECTION
+   ============================================= */
+
+.oasis-section {
+  background-color: var(--color-cream-mid);
+}
+
+.oasis-eyebrow {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-green-dark);
+  background-color: rgba(153, 183, 68, 0.15);
+  border: 1px solid rgba(153, 183, 68, 0.35);
+  border-radius: 50px;
+  padding: 0.3rem 0.9rem;
+  margin-bottom: 1rem;
+}
+
+.oasis-heading {
+  color: var(--color-dark);
+  margin-bottom: 1.25rem;
+}
+
+.oasis-body-text {
+  font-family: var(--font-body);
+  font-size: 0.97rem;
+  color: var(--color-text-body);
+  line-height: 1.75;
+  margin-bottom: 1rem;
+}
+
+.oasis-highlights {
+  list-style: none;
+  padding: 0;
+  margin: 1.5rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+
+.oasis-highlights li {
+  font-family: var(--font-body);
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--color-text-body);
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.oasis-highlights li .bi {
+  color: var(--color-green);
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+.chopitup-callout {
+  background-color: var(--color-dark);
+  border-left: 4px solid var(--color-green);
+  border-radius: 0 10px 10px 0;
+  padding: 1.1rem 1.3rem;
+  margin-bottom: 1.75rem;
+}
+
+.chopitup-callout p {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  color: rgba(255, 249, 240, 0.88);
+  margin-bottom: 0.55rem;
+  line-height: 1.65;
+}
+
+.chopitup-callout p strong {
+  color: var(--color-cream);
+}
+
+.chopitup-link {
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--color-green);
+  text-decoration: none;
+  letter-spacing: 0.03em;
+  transition: color 0.2s;
+}
+
+.chopitup-link:hover {
+  color: #b8d44e;
+  text-decoration: underline;
+}
+
+.oasis-contact-line {
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  color: rgba(255, 249, 240, 0.8);
+  margin-bottom: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.15rem;
+}
+
+.oasis-contact-line .bi {
+  color: var(--color-green);
+  font-size: 0.82rem;
+}
+
+.oasis-contact-sep {
+  color: rgba(255, 249, 240, 0.4);
+}
+
+.oasis-ctas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.btn-outline-oasis {
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-dark);
+  background-color: transparent;
+  border: 2px solid var(--color-dark);
+  border-radius: 50px;
+  padding: 0.6rem 1.4rem;
+  text-decoration: none;
+  transition: background-color 0.25s, color 0.25s;
+}
+
+.btn-outline-oasis:hover,
+.btn-outline-oasis:focus {
+  background-color: var(--color-dark);
+  color: var(--color-cream);
+}
+
+.oasis-media-wrap {
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 8px 40px rgba(58, 34, 34, 0.18);
+}
+
+.oasis-carousel-img {
+  height: 420px;
+  object-fit: cover;
+  object-position: center;
+}
+
+.oasis-carousel-label {
+  bottom: 0;
+  left: 0;
+  right: 0;
+  top: auto;
+  background: linear-gradient(transparent, rgba(0,0,0,0.52));
+  padding: 1.5rem 1rem 0.75rem;
+  text-align: left;
+}
+
+.oasis-carousel-label span {
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.9);
+  background: none;
+  padding: 0;
+}
+
+@media (max-width: 991px) {
+  .oasis-carousel-img {
+    height: 320px;
+  }
+  .oasis-ctas {
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 575px) {
+  .oasis-carousel-img {
+    height: 240px;
+  }
+  .oasis-ctas {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .oasis-ctas .btn,
+  .oasis-ctas .btn-outline-oasis {
+    text-align: center;
+  }
+}
+
+
+/* =============================================
+   22. PRINT STYLES
    ============================================= */
 @media print {
   .navbar,

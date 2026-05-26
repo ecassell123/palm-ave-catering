@@ -107,51 +107,63 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
   /* -----------------------------------------------------------
-     5. CONTACT FORM — placeholder behavior & basic validation
-     NOTE: No backend is wired up. To send emails, integrate
-     Formspree, EmailJS, or a custom endpoint (see HTML comment
-     in the <form> tag for options).
+     5. CONTACT FORM — Web3Forms submission
+     Submits to https://api.web3forms.com/submit via fetch.
+     Replace YOUR_ACCESS_KEY_HERE in index.html with the key
+     from web3forms.com to activate email delivery.
   ----------------------------------------------------------- */
   const form = document.getElementById('cateringInquiryForm');
   const submitBtn = document.getElementById('submitBtn');
 
   if (form) {
-    form.addEventListener('submit', function (e) {
+    form.addEventListener('submit', async function (e) {
       e.preventDefault();
 
-      // Bootstrap 5 validation styling
+      // Bootstrap validation check
       if (!form.checkValidity()) {
         form.classList.add('was-validated');
         return;
       }
 
-      // Disable button to prevent double-submit
+      // Loading state
       if (submitBtn) {
         submitBtn.disabled = true;
         submitBtn.innerHTML = '<span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>Sending...';
       }
 
-      // Simulate a short processing delay, then show success
-      setTimeout(function () {
-        showFormSuccess();
+      try {
+        const formData = new FormData(form);
+        const response = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          body: formData
+        });
+        const data = await response.json();
+
+        if (data.success) {
+          showFormMessage('success', '✓ Thanks for reaching out! Your inquiry has been received and we’ll be in touch within 1–2 business days.');
+          form.reset();
+          form.classList.remove('was-validated');
+        } else {
+          showFormMessage('error', 'Something went wrong — please try emailing us directly at <a href="mailto:info@palmavecatering.com">info@palmavecatering.com</a>.');
+        }
+      } catch (err) {
+        showFormMessage('error', 'Could not send your message. Please email us at <a href="mailto:info@palmavecatering.com">info@palmavecatering.com</a>.');
+      } finally {
         if (submitBtn) {
           submitBtn.disabled = false;
           submitBtn.innerHTML = '<i class="bi bi-send me-2"></i>Submit Catering Inquiry';
         }
-        form.reset();
-        form.classList.remove('was-validated');
-      }, 1200);
+      }
     });
   }
 
-  function showFormSuccess() {
-    // Remove any existing message
-    const existing = document.querySelector('.form-success-message');
+  function showFormMessage(type, html) {
+    const existing = document.querySelector('.form-status-message');
     if (existing) existing.remove();
 
     const msg = document.createElement('div');
-    msg.className = 'form-success-message visible';
-    msg.innerHTML = '&#10003; &nbsp;Thanks for reaching out! Your inquiry has been received and we\'ll be in touch within 1–2 business days.';
+    msg.className = 'form-status-message form-status-' + type;
+    msg.innerHTML = html;
 
     if (form) {
       form.parentNode.insertBefore(msg, form.nextSibling);
